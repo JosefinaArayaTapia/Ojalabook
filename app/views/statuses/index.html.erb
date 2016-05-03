@@ -1,21 +1,19 @@
 <div class="page-header">
-  <h1>Todos los Estados</h1>
+	<h1>Todos los Estados</h1>
 </div>
 
 <%= link_to "Crear Nuevo Estado", new_status_path,class: "btn btn-success"%>
 <% @statuses.each do |status| %>
 
-    <div class="status">
-      <strong><%= status.nombre %></strong>
-      <p><%= status.contenido %></p>
-      <div>
-        <%= link_to "Hace "+ time_ago_in_words(status.created_at)%> |
-        <span class="admin">
-                <%= link_to "Editar", edit_status_path(status) %> |
-          <%= link_to "Borrar", status, method: :delete, data: {confirm: "Esta seguro?"} %>
-        </span>
-      </div>
-
-
-    </div>
+<div class="status">
+	<strong><%= status.user.nombre_completo %></strong>
+	<p>
+		<%= status.contenido %>
+	</p>
+	<div>
+		<%= link_to "Hace "+ time_ago_in_words(status.created_at)%> |
+		<span class="admin"> <%= link_to "Editar", edit_status_path(status) %> |
+			<%= link_to "Borrar", status, method: :delete, data: {confirm: "Esta seguro?"} %> </span>
+	</div>
+</div>
 <% end %>
