@@ -1,10 +1,14 @@
 class StatusesController < ApplicationController
   before_action :set_status, only: [:show, :edit, :update, :destroy]
-
   # GET /statuses
   # GET /statuses.json
   def index
     @statuses = Status.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json{ render json: @statuses}
+    end
   end
 
   # GET /statuses/1
@@ -62,13 +66,14 @@ class StatusesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_status
-      @status = Status.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def status_params
-      params.require(:status).permit(:nombre, :contenido)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_status
+    @status = Status.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def status_params
+    params.require(:status).permit(:nombre, :contenido)
+  end
 end
