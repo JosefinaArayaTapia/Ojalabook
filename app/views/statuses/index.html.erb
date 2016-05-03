@@ -3,38 +3,19 @@
 </div>
 
 
-<%= @statuses.each do |status|%>
+<% @statuses.each do |status| %>
 
-<%= end %>
+    <div class="status">
+      <strong><%= status.nombre %></strong>
+      <p><%= status.contenido %></p>
+      <div>
+        <%= link_to "Hace "+ time_ago_in_words(status.created_at)%> |
+        <span class="admin">
+                <%= link_to "Editar", edit_status_path(status) %> |
+          <%= link_to "Borrar", status, method: :delete, data: {confirm: "Esta seguro?"} %>
+        </span>
+      </div>
 
 
-
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Statuses</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Contenido</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @statuses.each do |status| %>
-      <tr>
-        <td><%= status.nombre %></td>
-        <td><%= status.contenido %></td>
-        <td><%= link_to 'Show', status %></td>
-        <td><%= link_to 'Edit', edit_status_path(status) %></td>
-        <td><%= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Status', new_status_path %>
+    </div>
+<% end %>
