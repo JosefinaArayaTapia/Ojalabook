@@ -13,7 +13,7 @@
 </div>
 <% end %>
 
-<%= f.input :user_id %>
+<%= f.input :user_id , collection: User.all, label_method: :nombre_completo %>
 <%= f.input :contenido %>
 <div class="form-actions">
 	<%= f.button :submit %>

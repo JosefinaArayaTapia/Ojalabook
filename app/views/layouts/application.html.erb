@@ -18,6 +18,18 @@
 							<%= link_to "Status",statuses_path %>
 						</li>
 					</ul>
+					<ul class="nav navbar-nav pull-right">
+
+						<% if user_signed_in? %>
+						<li>
+							<%= link_to current_user.nombre_completo, edit_user_registration_path %>
+						</li>
+						<li>
+							<%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %>
+						</li>
+						<% else %>
+						<% end %>
+					</ul>
 				</div>
 			</div>
 		</nav>
